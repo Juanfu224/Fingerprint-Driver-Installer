@@ -1,25 +1,28 @@
 import os
 
-# Elimina los paquetes fprintd y libpam-fprintd del sistema, junto con sus archivos de configuración.
+# Removes the fprintd and libpam-fprintd packages from the system, along with their configuration files.
 os.system("sudo apt purge fprintd libpam-fprintd")
 
-# Instala las herramientas y dependencias necesarias para compilar y trabajar con libfprint.
+# Installs the necessary tools and dependencies required to compile and work with libfprint.
 os.system("sudo apt install meson cmake libglib2.0-dev libgusb-dev libcairo2-dev libgirepository1.0-dev libnss3-dev libgudev-1.0-dev gtk-doc-tools valgrind")
 
-# Clona el repositorio oficial de libfprint.
+# Clones the official libfprint repository.
 os.system("git clone https://gitlab.freedesktop.org/libfprint/libfprint.git")
 
-# Configura la compilación del proyecto libfprint en un directorio llamado 'builddir'.
+# Copies the cloned libfprint directory to the current working directory.
+os.system("sudo cp -r libfprint .")
+
+# Configures the build of the libfprint project in a directory named 'builddir'.
 os.system("sudo meson builddir")
 
-# Instala el proyecto libfprint desde el directorio de compilación 'builddir'.
+# Installs the libfprint project from the 'builddir' build directory.
 os.system("sudo meson install -C builddir")
 
-# Vuelve a instalar los paquetes fprintd y libpam-fprintd, necesarios para la autenticación de huellas dactilares.
+# Reinstalls the fprintd and libpam-fprintd packages, which are needed for fingerprint authentication.
 os.system("sudo apt install fprintd libpam-fprintd")
 
-# Actualiza la configuración de autenticación del sistema para aplicar los cambios de PAM (Pluggable Authentication Modules).
+# Updates the system's authentication configuration to apply changes to PAM (Pluggable Authentication Modules).
 os.system("sudo pam-auth-update")
 
-# Registra una huella digital (dedo índice derecho) en el sistema para la autenticación biométrica.
+# Enrolls a fingerprint (right index finger) into the system for biometric authentication.
 os.system("fprintd-enroll -f right-index-finger")
