@@ -1,13 +1,14 @@
 # Fingerprint-Driver-Installer
-Automatiza la instalación y la configuración de los drivers del lector de huellas en Linux. Probado en Linux Mint 22 (Wilma)
-# Instalación
+Automates the installation and configuration of fingerprint reader drivers on Linux. Tested on Linux Mint 22 (Wilma).
+
+# Installation
 ```
 sudo apt install git
 git clone https://github.com/Juanfu224/Fingerprint-Driver-Installer.git ~/Fingerprint-Driver-Installer
 cd ~/Fingerprint-Driver-Installer
 python3 main.py
 ```
-# Créditos
-- Autor del script: Juanfu224 --> https://github.com/Juanfu224
-- Autor de los drivers: Tamer Hassan --> https://gitlab.freedesktop.org/thameruddin
-- Inspirado por: AmulyaX -->https://gist.github.com/AmulyaX ❤️
+# Credits
+- Script Author: Juanfu224 --> https://github.com/Juanfu224
+- Drivers Author: Tamer Hassan --> https://gitlab.freedesktop.org/thameruddin
+- Inspired by: AmulyaX --> https://gist.github.com/AmulyaX ❤️
